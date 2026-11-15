@@ -1,0 +1,6 @@
+[core]
+    autostage = true
+    remote = bucket
+['remote "bucket"']
+    url = s3://datahack2026/dvc
+    region = garage

@@ -1,0 +1,1603 @@
+schema: '2.0'
+stages:
+  game:
+    cmd: just game
+    deps:
+    - path: app/scripts/build-data.ts
+      hash: md5
+      md5: e971c560721ad8565168e54831b00de9
+      size: 4322
+    - path: app/scripts/build-players.ts
+      hash: md5
+      md5: d9ec795f5cbf4240d02ba972b4d8e835
+      size: 1125
+    - path: store/data/U.S. Collegiate Selects_HC 
+        Davos_Wisehockey_Match_Events_31_12_2025.csv
+      hash: md5
+      md5: 4bf8dabf2e5c5b5f9fe6478b7048550d
+      size: 3489260
+    - path: store/data/U.S. Collegiate Selects_HC 
+        Davos_Wisehockey_Match_Statistics_31_12_2025 All.csv
+      hash: md5
+      md5: 331db404bf50e0e26d6b3f18283c703c
+      size: 17859
+    outs:
+    - path: store/site/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: store/site/players.json
+      hash: md5
+      md5: 6819f6b92d1a5b3a308bf6a8197b735b
+      size: 10023
+  windows:
+    cmd: just windows
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/windows.py
+      hash: md5
+      md5: d4e44d14f697fe2a329199bb5cfebf2b
+      size: 933
+    outs:
+    - path: pipeline/goals.json
+      hash: md5
+      md5: 38d7c5319377f26742d0ad5abf3385c7
+      size: 517
+  bundle@asplund:
+    cmd: just bundle asplund 2078.86 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/asplund/bundle/cast.json
+      hash: md5
+      md5: 78b20854e92ebdd20acd6a5e46432017
+      size: 112309
+    - path: pipeline/goals/asplund/bundle/frames
+      hash: md5
+      md5: 811e44671691cdb9bc7bd5c59d2977d8.dir
+      size: 76371151
+      nfiles: 250
+    - path: pipeline/goals/asplund/bundle/scene.json
+      hash: md5
+      md5: eacf1d15bed5130d5c4058acf54ee2a0
+      size: 3019034
+    - path: pipeline/goals/asplund/bundle/scene.npz
+      hash: md5
+      md5: 34bfb58117556afb3e9c59c111f768ec
+      size: 35550
+  bundle@walsh:
+    cmd: just bundle walsh 2304.02 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/walsh/bundle/cast.json
+      hash: md5
+      md5: 7169d4dd94d0443dcd102ba8a89589dd
+      size: 115564
+    - path: pipeline/goals/walsh/bundle/frames
+      hash: md5
+      md5: f35f8ea5dd12cff7f829a05cbdbfadf6.dir
+      size: 67074708
+      nfiles: 250
+    - path: pipeline/goals/walsh/bundle/scene.json
+      hash: md5
+      md5: bac3ae78bd09e4d36292b195a00f20c0
+      size: 2803244
+    - path: pipeline/goals/walsh/bundle/scene.npz
+      hash: md5
+      md5: 0bea49eaa18ae2f0a0f896420dd8e6d4
+      size: 35550
+  bundle@tambellini_p1:
+    cmd: just bundle tambellini_p1 2447.98 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/tambellini_p1/bundle/cast.json
+      hash: md5
+      md5: c41f9ec018e9f07d9f898cd00da5c953
+      size: 152657
+    - path: pipeline/goals/tambellini_p1/bundle/frames
+      hash: md5
+      md5: ff4af3fe32d9278c25e738d7b2ea1c1a.dir
+      size: 77515519
+      nfiles: 250
+    - path: pipeline/goals/tambellini_p1/bundle/scene.json
+      hash: md5
+      md5: 80d1df4d174070ce3fc1aad8784f2cc5
+      size: 2563910
+    - path: pipeline/goals/tambellini_p1/bundle/scene.npz
+      hash: md5
+      md5: a28469d5855662ca2c64c2ee95b22392
+      size: 35550
+  bundle@fink:
+    cmd: just bundle fink 4272.9 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/fink/bundle/cast.json
+      hash: md5
+      md5: 260ebd5d1998557817d9547b2d139ca4
+      size: 105966
+    - path: pipeline/goals/fink/bundle/frames
+      hash: md5
+      md5: 1f44ebad4557434b613519b4171d8818.dir
+      size: 87107485
+      nfiles: 250
+    - path: pipeline/goals/fink/bundle/scene.json
+      hash: md5
+      md5: 361d5190bc5524398a2cded32848ea6c
+      size: 3041707
+    - path: pipeline/goals/fink/bundle/scene.npz
+      hash: md5
+      md5: 09aefea956d010c958f20379852f43ad
+      size: 35550
+  bundle@tambellini:
+    cmd: just bundle tambellini 4891.24 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/tambellini/bundle/cast.json
+      hash: md5
+      md5: e374eb263a404ef39e99d7d881bc5c45
+      size: 116407
+    - path: pipeline/goals/tambellini/bundle/frames
+      hash: md5
+      md5: ab1ca02aab683247d311698a9394ade1.dir
+      size: 78190146
+      nfiles: 250
+    - path: pipeline/goals/tambellini/bundle/scene.json
+      hash: md5
+      md5: ecadea558e1f0299d1e6a7cf55e9f0f2
+      size: 3104219
+    - path: pipeline/goals/tambellini/bundle/scene.npz
+      hash: md5
+      md5: 25911d15ffea38e3b2b3fb70bcfd5cd7
+      size: 35438
+  bundle@musa:
+    cmd: just bundle musa 5310.2 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/musa/bundle/cast.json
+      hash: md5
+      md5: a00b0ae56948c35c9d3bee0d07cab186
+      size: 106139
+    - path: pipeline/goals/musa/bundle/frames
+      hash: md5
+      md5: 1a17098aeab48e6f60c0228634b3db06.dir
+      size: 88655077
+      nfiles: 250
+    - path: pipeline/goals/musa/bundle/scene.json
+      hash: md5
+      md5: eef50f491ae973b4f9204bf6235e1e83
+      size: 3052566
+    - path: pipeline/goals/musa/bundle/scene.npz
+      hash: md5
+      md5: 456dd8412bd5892f4498d21a57eecc81
+      size: 35326
+  bundle@zadina:
+    cmd: just bundle zadina 8672.9 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/zadina/bundle/cast.json
+      hash: md5
+      md5: 82feaa448a2e09bbeced470650277504
+      size: 91174
+    - path: pipeline/goals/zadina/bundle/frames
+      hash: md5
+      md5: 89a4e6c3a031509452eb588b4d32c638.dir
+      size: 64854863
+      nfiles: 250
+    - path: pipeline/goals/zadina/bundle/scene.json
+      hash: md5
+      md5: 208d7f2911a0439bb341630752c5c151
+      size: 3006691
+    - path: pipeline/goals/zadina/bundle/scene.npz
+      hash: md5
+      md5: 0328285ee53b324bc624f1d9cf86668f
+      size: 32862
+  bundle@corvi:
+    cmd: just bundle corvi 8919.34 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/corvi/bundle/cast.json
+      hash: md5
+      md5: 2b9878a03c02ff735deab4ac27107ca6
+      size: 112540
+    - path: pipeline/goals/corvi/bundle/frames
+      hash: md5
+      md5: c9b2a67b6268a05b37c30bd7d0b48139.dir
+      size: 59026972
+      nfiles: 250
+    - path: pipeline/goals/corvi/bundle/scene.json
+      hash: md5
+      md5: bcad3c74b1ce5d801f77de20038a2384
+      size: 2895409
+    - path: pipeline/goals/corvi/bundle/scene.npz
+      hash: md5
+      md5: a052f6c7e2d89e6470898c59153bafba
+      size: 34318
+  bundle@stransky:
+    cmd: just bundle stransky 9191.02 10.0
+    deps:
+    - path: app/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    - path: pipeline/goal/cast.py
+      hash: md5
+      md5: 1439fc2190ca7c50d37ece4f70aff29d
+      size: 19477
+    - path: pipeline/goal/prep.py
+      hash: md5
+      md5: a4a7d281030f073f4279a9c465662ea0
+      size: 9605
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: pipeline/goals/stransky/bundle/cast.json
+      hash: md5
+      md5: 8fa3a41e8cb736076e680f6d0d10e62f
+      size: 109254
+    - path: pipeline/goals/stransky/bundle/frames
+      hash: md5
+      md5: 4b425f480eeb3b7dd52b184ea7368241.dir
+      size: 78403777
+      nfiles: 250
+    - path: pipeline/goals/stransky/bundle/scene.json
+      hash: md5
+      md5: acbe31f17ba844f7ef58e15440808a92
+      size: 1854132
+    - path: pipeline/goals/stransky/bundle/scene.npz
+      hash: md5
+      md5: 1b3c81e4b3df73309a9846948a423249
+      size: 31518
+  detect@asplund:
+    cmd: just detect asplund
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/asplund/bundle/frames
+      hash: md5
+      md5: 811e44671691cdb9bc7bd5c59d2977d8.dir
+      size: 76371151
+      nfiles: 250
+    - path: pipeline/goals/asplund/bundle/scene.json
+      hash: md5
+      md5: eacf1d15bed5130d5c4058acf54ee2a0
+      size: 3019034
+    outs:
+    - path: pipeline/goals/asplund/bundle/puck_dets.json
+      hash: md5
+      md5: 9ecfd02335eec5c3fcea81a831a7ffa9
+      size: 14093
+  detect@walsh:
+    cmd: just detect walsh
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/walsh/bundle/frames
+      hash: md5
+      md5: f35f8ea5dd12cff7f829a05cbdbfadf6.dir
+      size: 67074708
+      nfiles: 250
+    - path: pipeline/goals/walsh/bundle/scene.json
+      hash: md5
+      md5: bac3ae78bd09e4d36292b195a00f20c0
+      size: 2803244
+    outs:
+    - path: pipeline/goals/walsh/bundle/puck_dets.json
+      hash: md5
+      md5: c56204b0e294a196387116dcf24bf6d1
+      size: 17490
+  detect@tambellini_p1:
+    cmd: just detect tambellini_p1
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/tambellini_p1/bundle/frames
+      hash: md5
+      md5: ff4af3fe32d9278c25e738d7b2ea1c1a.dir
+      size: 77515519
+      nfiles: 250
+    - path: pipeline/goals/tambellini_p1/bundle/scene.json
+      hash: md5
+      md5: 80d1df4d174070ce3fc1aad8784f2cc5
+      size: 2563910
+    outs:
+    - path: pipeline/goals/tambellini_p1/bundle/puck_dets.json
+      hash: md5
+      md5: 35134f92d1ed6745e85ce0209c4ae66a
+      size: 14323
+  detect@fink:
+    cmd: just detect fink
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/fink/bundle/frames
+      hash: md5
+      md5: 1f44ebad4557434b613519b4171d8818.dir
+      size: 87107485
+      nfiles: 250
+    - path: pipeline/goals/fink/bundle/scene.json
+      hash: md5
+      md5: 361d5190bc5524398a2cded32848ea6c
+      size: 3041707
+    outs:
+    - path: pipeline/goals/fink/bundle/puck_dets.json
+      hash: md5
+      md5: 6127a1963a952b27d7ba32793db08b38
+      size: 14007
+  detect@tambellini:
+    cmd: just detect tambellini
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/tambellini/bundle/frames
+      hash: md5
+      md5: ab1ca02aab683247d311698a9394ade1.dir
+      size: 78190146
+      nfiles: 250
+    - path: pipeline/goals/tambellini/bundle/scene.json
+      hash: md5
+      md5: ecadea558e1f0299d1e6a7cf55e9f0f2
+      size: 3104219
+    outs:
+    - path: pipeline/goals/tambellini/bundle/puck_dets.json
+      hash: md5
+      md5: 571bff2b9094473ecce9747a54b09f1b
+      size: 16607
+  detect@musa:
+    cmd: just detect musa
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/musa/bundle/frames
+      hash: md5
+      md5: 1a17098aeab48e6f60c0228634b3db06.dir
+      size: 88655077
+      nfiles: 250
+    - path: pipeline/goals/musa/bundle/scene.json
+      hash: md5
+      md5: eef50f491ae973b4f9204bf6235e1e83
+      size: 3052566
+    outs:
+    - path: pipeline/goals/musa/bundle/puck_dets.json
+      hash: md5
+      md5: 61c18c3b0ad301ac2f04006f66d0860d
+      size: 16829
+  detect@zadina:
+    cmd: just detect zadina
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/zadina/bundle/frames
+      hash: md5
+      md5: 89a4e6c3a031509452eb588b4d32c638.dir
+      size: 64854863
+      nfiles: 250
+    - path: pipeline/goals/zadina/bundle/scene.json
+      hash: md5
+      md5: 208d7f2911a0439bb341630752c5c151
+      size: 3006691
+    outs:
+    - path: pipeline/goals/zadina/bundle/puck_dets.json
+      hash: md5
+      md5: b89e9e346483f321b6917ab594c0d411
+      size: 10407
+  detect@corvi:
+    cmd: just detect corvi
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/corvi/bundle/frames
+      hash: md5
+      md5: c9b2a67b6268a05b37c30bd7d0b48139.dir
+      size: 59026972
+      nfiles: 250
+    - path: pipeline/goals/corvi/bundle/scene.json
+      hash: md5
+      md5: bcad3c74b1ce5d801f77de20038a2384
+      size: 2895409
+    outs:
+    - path: pipeline/goals/corvi/bundle/puck_dets.json
+      hash: md5
+      md5: 997b7423ea2b137f9801e3ec54132028
+      size: 11547
+  detect@stransky:
+    cmd: just detect stransky
+    deps:
+    - path: pipeline/goal/puck.py
+      hash: md5
+      md5: 2dcd00598021045968489e9235268769
+      size: 17487
+    - path: pipeline/goals/stransky/bundle/frames
+      hash: md5
+      md5: 4b425f480eeb3b7dd52b184ea7368241.dir
+      size: 78403777
+      nfiles: 250
+    - path: pipeline/goals/stransky/bundle/scene.json
+      hash: md5
+      md5: acbe31f17ba844f7ef58e15440808a92
+      size: 1854132
+    outs:
+    - path: pipeline/goals/stransky/bundle/puck_dets.json
+      hash: md5
+      md5: 3ef4106937155ba68fcf527adc0ee401
+      size: 13180
+  bodies@asplund:
+    cmd: just bodies asplund
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/asplund/bundle/cast.json
+      hash: md5
+      md5: 78b20854e92ebdd20acd6a5e46432017
+      size: 112309
+    - path: pipeline/goals/asplund/bundle/frames
+      hash: md5
+      md5: 811e44671691cdb9bc7bd5c59d2977d8.dir
+      size: 76371151
+      nfiles: 250
+    - path: pipeline/goals/asplund/bundle/scene.json
+      hash: md5
+      md5: eacf1d15bed5130d5c4058acf54ee2a0
+      size: 3019034
+    - path: pipeline/goals/asplund/bundle/scene.npz
+      hash: md5
+      md5: 34bfb58117556afb3e9c59c111f768ec
+      size: 35550
+    outs:
+    - path: pipeline/goals/asplund/bundle/bodies.npz
+      hash: md5
+      md5: 0c47b671e8aab098eabebc925e84c334
+      size: 172939309
+  bodies@walsh:
+    cmd: just bodies walsh
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/walsh/bundle/cast.json
+      hash: md5
+      md5: 7169d4dd94d0443dcd102ba8a89589dd
+      size: 115564
+    - path: pipeline/goals/walsh/bundle/frames
+      hash: md5
+      md5: f35f8ea5dd12cff7f829a05cbdbfadf6.dir
+      size: 67074708
+      nfiles: 250
+    - path: pipeline/goals/walsh/bundle/scene.json
+      hash: md5
+      md5: bac3ae78bd09e4d36292b195a00f20c0
+      size: 2803244
+    - path: pipeline/goals/walsh/bundle/scene.npz
+      hash: md5
+      md5: 0bea49eaa18ae2f0a0f896420dd8e6d4
+      size: 35550
+    outs:
+    - path: pipeline/goals/walsh/bundle/bodies.npz
+      hash: md5
+      md5: 06cd96ad5d4edd4c40271707ede0ff07
+      size: 162205086
+  bodies@tambellini_p1:
+    cmd: just bodies tambellini_p1
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/tambellini_p1/bundle/cast.json
+      hash: md5
+      md5: c41f9ec018e9f07d9f898cd00da5c953
+      size: 152657
+    - path: pipeline/goals/tambellini_p1/bundle/frames
+      hash: md5
+      md5: ff4af3fe32d9278c25e738d7b2ea1c1a.dir
+      size: 77515519
+      nfiles: 250
+    - path: pipeline/goals/tambellini_p1/bundle/scene.json
+      hash: md5
+      md5: 80d1df4d174070ce3fc1aad8784f2cc5
+      size: 2563910
+    - path: pipeline/goals/tambellini_p1/bundle/scene.npz
+      hash: md5
+      md5: a28469d5855662ca2c64c2ee95b22392
+      size: 35550
+    outs:
+    - path: pipeline/goals/tambellini_p1/bundle/bodies.npz
+      hash: md5
+      md5: badfe386b3346393b4970769e7fbdd91
+      size: 153218027
+  bodies@fink:
+    cmd: just bodies fink
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/fink/bundle/cast.json
+      hash: md5
+      md5: 260ebd5d1998557817d9547b2d139ca4
+      size: 105966
+    - path: pipeline/goals/fink/bundle/frames
+      hash: md5
+      md5: 1f44ebad4557434b613519b4171d8818.dir
+      size: 87107485
+      nfiles: 250
+    - path: pipeline/goals/fink/bundle/scene.json
+      hash: md5
+      md5: 361d5190bc5524398a2cded32848ea6c
+      size: 3041707
+    - path: pipeline/goals/fink/bundle/scene.npz
+      hash: md5
+      md5: 09aefea956d010c958f20379852f43ad
+      size: 35550
+    outs:
+    - path: pipeline/goals/fink/bundle/bodies.npz
+      hash: md5
+      md5: 687c1f82e641985ab73c793c28006015
+      size: 170760824
+  bodies@tambellini:
+    cmd: just bodies tambellini
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/tambellini/bundle/cast.json
+      hash: md5
+      md5: e374eb263a404ef39e99d7d881bc5c45
+      size: 116407
+    - path: pipeline/goals/tambellini/bundle/frames
+      hash: md5
+      md5: ab1ca02aab683247d311698a9394ade1.dir
+      size: 78190146
+      nfiles: 250
+    - path: pipeline/goals/tambellini/bundle/scene.json
+      hash: md5
+      md5: ecadea558e1f0299d1e6a7cf55e9f0f2
+      size: 3104219
+    - path: pipeline/goals/tambellini/bundle/scene.npz
+      hash: md5
+      md5: 25911d15ffea38e3b2b3fb70bcfd5cd7
+      size: 35438
+    outs:
+    - path: pipeline/goals/tambellini/bundle/bodies.npz
+      hash: md5
+      md5: c9a9f9d733461aa37dffb28915a2f586
+      size: 167665063
+  bodies@musa:
+    cmd: just bodies musa
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/musa/bundle/cast.json
+      hash: md5
+      md5: a00b0ae56948c35c9d3bee0d07cab186
+      size: 106139
+    - path: pipeline/goals/musa/bundle/frames
+      hash: md5
+      md5: 1a17098aeab48e6f60c0228634b3db06.dir
+      size: 88655077
+      nfiles: 250
+    - path: pipeline/goals/musa/bundle/scene.json
+      hash: md5
+      md5: eef50f491ae973b4f9204bf6235e1e83
+      size: 3052566
+    - path: pipeline/goals/musa/bundle/scene.npz
+      hash: md5
+      md5: 456dd8412bd5892f4498d21a57eecc81
+      size: 35326
+    outs:
+    - path: pipeline/goals/musa/bundle/bodies.npz
+      hash: md5
+      md5: 43817915ad6ae288eaaca6b3ec1ebaaf
+      size: 173748669
+  bodies@zadina:
+    cmd: just bodies zadina
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/zadina/bundle/cast.json
+      hash: md5
+      md5: 82feaa448a2e09bbeced470650277504
+      size: 91174
+    - path: pipeline/goals/zadina/bundle/frames
+      hash: md5
+      md5: 89a4e6c3a031509452eb588b4d32c638.dir
+      size: 64854863
+      nfiles: 250
+    - path: pipeline/goals/zadina/bundle/scene.json
+      hash: md5
+      md5: 208d7f2911a0439bb341630752c5c151
+      size: 3006691
+    - path: pipeline/goals/zadina/bundle/scene.npz
+      hash: md5
+      md5: 0328285ee53b324bc624f1d9cf86668f
+      size: 32862
+    outs:
+    - path: pipeline/goals/zadina/bundle/bodies.npz
+      hash: md5
+      md5: 784c635d78baf6b6b8e0835d72559eba
+      size: 149753520
+  bodies@corvi:
+    cmd: just bodies corvi
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/corvi/bundle/cast.json
+      hash: md5
+      md5: 2b9878a03c02ff735deab4ac27107ca6
+      size: 112540
+    - path: pipeline/goals/corvi/bundle/frames
+      hash: md5
+      md5: c9b2a67b6268a05b37c30bd7d0b48139.dir
+      size: 59026972
+      nfiles: 250
+    - path: pipeline/goals/corvi/bundle/scene.json
+      hash: md5
+      md5: bcad3c74b1ce5d801f77de20038a2384
+      size: 2895409
+    - path: pipeline/goals/corvi/bundle/scene.npz
+      hash: md5
+      md5: a052f6c7e2d89e6470898c59153bafba
+      size: 34318
+    outs:
+    - path: pipeline/goals/corvi/bundle/bodies.npz
+      hash: md5
+      md5: d03f109903d8279b9affeee759452a72
+      size: 129131556
+  bodies@stransky:
+    cmd: just bodies stransky
+    deps:
+    - path: pipeline/goal/body.py
+      hash: md5
+      md5: 13dfbc8b4a2ef1f402bf0248b72e32e4
+      size: 6681
+    - path: pipeline/goals/stransky/bundle/cast.json
+      hash: md5
+      md5: 8fa3a41e8cb736076e680f6d0d10e62f
+      size: 109254
+    - path: pipeline/goals/stransky/bundle/frames
+      hash: md5
+      md5: 4b425f480eeb3b7dd52b184ea7368241.dir
+      size: 78403777
+      nfiles: 250
+    - path: pipeline/goals/stransky/bundle/scene.json
+      hash: md5
+      md5: acbe31f17ba844f7ef58e15440808a92
+      size: 1854132
+    - path: pipeline/goals/stransky/bundle/scene.npz
+      hash: md5
+      md5: 1b3c81e4b3df73309a9846948a423249
+      size: 31518
+    outs:
+    - path: pipeline/goals/stransky/bundle/bodies.npz
+      hash: md5
+      md5: 916f97e510cf80d4bfef0b9b913b9c3e
+      size: 94472899
+  sticks@asplund:
+    cmd: just sticks asplund
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/asplund/bundle/frames
+      hash: md5
+      md5: 811e44671691cdb9bc7bd5c59d2977d8.dir
+      size: 76371151
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/asplund/bundle/sticks.json
+      hash: md5
+      md5: aad2160cba16de2a5a762d026cde5694
+      size: 373599
+  sticks@walsh:
+    cmd: just sticks walsh
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/walsh/bundle/frames
+      hash: md5
+      md5: f35f8ea5dd12cff7f829a05cbdbfadf6.dir
+      size: 67074708
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/walsh/bundle/sticks.json
+      hash: md5
+      md5: 5201192be153513244f9a95ab60b8bba
+      size: 353017
+  sticks@tambellini_p1:
+    cmd: just sticks tambellini_p1
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/tambellini_p1/bundle/frames
+      hash: md5
+      md5: ff4af3fe32d9278c25e738d7b2ea1c1a.dir
+      size: 77515519
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/tambellini_p1/bundle/sticks.json
+      hash: md5
+      md5: 7020ba67bc848771dc24e1e21f3faf9d
+      size: 381974
+  sticks@fink:
+    cmd: just sticks fink
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/fink/bundle/frames
+      hash: md5
+      md5: 1f44ebad4557434b613519b4171d8818.dir
+      size: 87107485
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/fink/bundle/sticks.json
+      hash: md5
+      md5: 618ef7c35db151a9f6d978b55bdcca46
+      size: 569922
+  sticks@tambellini:
+    cmd: just sticks tambellini
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/tambellini/bundle/frames
+      hash: md5
+      md5: ab1ca02aab683247d311698a9394ade1.dir
+      size: 78190146
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/tambellini/bundle/sticks.json
+      hash: md5
+      md5: 2ace43a6633c38964e1b9c9c10bdd3b1
+      size: 465157
+  sticks@musa:
+    cmd: just sticks musa
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/musa/bundle/frames
+      hash: md5
+      md5: 1a17098aeab48e6f60c0228634b3db06.dir
+      size: 88655077
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/musa/bundle/sticks.json
+      hash: md5
+      md5: 79c16600a3a13a971b92a72f6c07b520
+      size: 409664
+  sticks@zadina:
+    cmd: just sticks zadina
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/zadina/bundle/frames
+      hash: md5
+      md5: 89a4e6c3a031509452eb588b4d32c638.dir
+      size: 64854863
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/zadina/bundle/sticks.json
+      hash: md5
+      md5: 79c1ca926653f6adcb8b125feef6ab0c
+      size: 307828
+  sticks@corvi:
+    cmd: just sticks corvi
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/corvi/bundle/frames
+      hash: md5
+      md5: c9b2a67b6268a05b37c30bd7d0b48139.dir
+      size: 59026972
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/corvi/bundle/sticks.json
+      hash: md5
+      md5: 99ceb8377811b16ae4b1d5f7b57ce840
+      size: 382347
+  sticks@stransky:
+    cmd: just sticks stransky
+    deps:
+    - path: pipeline/goal/sticks.py
+      hash: md5
+      md5: c41147869af7fb8193a9947f39a55a51
+      size: 3096
+    - path: pipeline/goals/stransky/bundle/frames
+      hash: md5
+      md5: 4b425f480eeb3b7dd52b184ea7368241.dir
+      size: 78403777
+      nfiles: 250
+    outs:
+    - path: pipeline/goals/stransky/bundle/sticks.json
+      hash: md5
+      md5: 4bea83e22d3c7df675acf94e98748ff5
+      size: 194789
+  ar:
+    cmd: just calib all && just calib masks && just calib gaps
+    deps:
+    - path: pipeline/calib/gpu
+      hash: md5
+      md5: 85ed61a6f4152bfcbf3b143a8ce605ad.dir
+      size: 16179
+      nfiles: 4
+    - path: pipeline/calib/scripts
+      hash: md5
+      md5: e2c7b70652e4539ad6325adba9b94fd6.dir
+      size: 265865
+      nfiles: 41
+    - path: store/data/20251231_115035_SpenglerCup_Kam1 31.12.25 Game 11.mp4
+      hash: md5
+      md5: 633e7bf1d3d00139e3e3f1b4ddc69c8f
+      size: 13717912932
+    - path: store/site/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    outs:
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+  scene@asplund:
+    cmd: just scene asplund
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/asplund/bundle/bodies.npz
+      hash: md5
+      md5: 0c47b671e8aab098eabebc925e84c334
+      size: 172939309
+    - path: pipeline/goals/asplund/bundle/cast.json
+      hash: md5
+      md5: 78b20854e92ebdd20acd6a5e46432017
+      size: 112309
+    - path: pipeline/goals/asplund/bundle/puck_dets.json
+      hash: md5
+      md5: 9ecfd02335eec5c3fcea81a831a7ffa9
+      size: 14093
+    - path: pipeline/goals/asplund/bundle/scene.json
+      hash: md5
+      md5: eacf1d15bed5130d5c4058acf54ee2a0
+      size: 3019034
+    - path: pipeline/goals/asplund/bundle/scene.npz
+      hash: md5
+      md5: 34bfb58117556afb3e9c59c111f768ec
+      size: 35550
+    - path: pipeline/goals/asplund/bundle/sticks.json
+      hash: md5
+      md5: aad2160cba16de2a5a762d026cde5694
+      size: 373599
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/asplund
+      hash: md5
+      md5: b222f8624ef2bf53e2c6da596663c1c0.dir
+      size: 123066139
+      nfiles: 75
+  scene@walsh:
+    cmd: just scene walsh
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/walsh/bundle/bodies.npz
+      hash: md5
+      md5: 06cd96ad5d4edd4c40271707ede0ff07
+      size: 162205086
+    - path: pipeline/goals/walsh/bundle/cast.json
+      hash: md5
+      md5: 7169d4dd94d0443dcd102ba8a89589dd
+      size: 115564
+    - path: pipeline/goals/walsh/bundle/puck_dets.json
+      hash: md5
+      md5: c56204b0e294a196387116dcf24bf6d1
+      size: 17490
+    - path: pipeline/goals/walsh/bundle/scene.json
+      hash: md5
+      md5: bac3ae78bd09e4d36292b195a00f20c0
+      size: 2803244
+    - path: pipeline/goals/walsh/bundle/scene.npz
+      hash: md5
+      md5: 0bea49eaa18ae2f0a0f896420dd8e6d4
+      size: 35550
+    - path: pipeline/goals/walsh/bundle/sticks.json
+      hash: md5
+      md5: 5201192be153513244f9a95ab60b8bba
+      size: 353017
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/walsh
+      hash: md5
+      md5: 53f89eac3e0a65c04a3f591f8c348437.dir
+      size: 127124685
+      nfiles: 79
+  scene@tambellini_p1:
+    cmd: just scene tambellini_p1
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/tambellini_p1/bundle/bodies.npz
+      hash: md5
+      md5: badfe386b3346393b4970769e7fbdd91
+      size: 153218027
+    - path: pipeline/goals/tambellini_p1/bundle/cast.json
+      hash: md5
+      md5: c41f9ec018e9f07d9f898cd00da5c953
+      size: 152657
+    - path: pipeline/goals/tambellini_p1/bundle/puck_dets.json
+      hash: md5
+      md5: 35134f92d1ed6745e85ce0209c4ae66a
+      size: 14323
+    - path: pipeline/goals/tambellini_p1/bundle/scene.json
+      hash: md5
+      md5: 80d1df4d174070ce3fc1aad8784f2cc5
+      size: 2563910
+    - path: pipeline/goals/tambellini_p1/bundle/scene.npz
+      hash: md5
+      md5: a28469d5855662ca2c64c2ee95b22392
+      size: 35550
+    - path: pipeline/goals/tambellini_p1/bundle/sticks.json
+      hash: md5
+      md5: 7020ba67bc848771dc24e1e21f3faf9d
+      size: 381974
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/tambellini_p1
+      hash: md5
+      md5: 06771df8564251b9930379054fa35df2.dir
+      size: 157216167
+      nfiles: 98
+  scene@fink:
+    cmd: just scene fink
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/fink/bundle/bodies.npz
+      hash: md5
+      md5: 687c1f82e641985ab73c793c28006015
+      size: 170760824
+    - path: pipeline/goals/fink/bundle/cast.json
+      hash: md5
+      md5: 260ebd5d1998557817d9547b2d139ca4
+      size: 105966
+    - path: pipeline/goals/fink/bundle/puck_dets.json
+      hash: md5
+      md5: 6127a1963a952b27d7ba32793db08b38
+      size: 14007
+    - path: pipeline/goals/fink/bundle/scene.json
+      hash: md5
+      md5: 361d5190bc5524398a2cded32848ea6c
+      size: 3041707
+    - path: pipeline/goals/fink/bundle/scene.npz
+      hash: md5
+      md5: 09aefea956d010c958f20379852f43ad
+      size: 35550
+    - path: pipeline/goals/fink/bundle/sticks.json
+      hash: md5
+      md5: 618ef7c35db151a9f6d978b55bdcca46
+      size: 569922
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/fink
+      hash: md5
+      md5: 6fbd80788a5fe070172e4dded430cc53.dir
+      size: 118226413
+      nfiles: 71
+  scene@tambellini:
+    cmd: just scene tambellini
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/tambellini/bundle/bodies.npz
+      hash: md5
+      md5: c9a9f9d733461aa37dffb28915a2f586
+      size: 167665063
+    - path: pipeline/goals/tambellini/bundle/cast.json
+      hash: md5
+      md5: e374eb263a404ef39e99d7d881bc5c45
+      size: 116407
+    - path: pipeline/goals/tambellini/bundle/puck_dets.json
+      hash: md5
+      md5: 571bff2b9094473ecce9747a54b09f1b
+      size: 16607
+    - path: pipeline/goals/tambellini/bundle/scene.json
+      hash: md5
+      md5: ecadea558e1f0299d1e6a7cf55e9f0f2
+      size: 3104219
+    - path: pipeline/goals/tambellini/bundle/scene.npz
+      hash: md5
+      md5: 25911d15ffea38e3b2b3fb70bcfd5cd7
+      size: 35438
+    - path: pipeline/goals/tambellini/bundle/sticks.json
+      hash: md5
+      md5: 2ace43a6633c38964e1b9c9c10bdd3b1
+      size: 465157
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/tambellini
+      hash: md5
+      md5: 88df52ce7abe9ba6d3691f5588c3b03e.dir
+      size: 130670756
+      nfiles: 79
+  scene@musa:
+    cmd: just scene musa
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/musa/bundle/bodies.npz
+      hash: md5
+      md5: 43817915ad6ae288eaaca6b3ec1ebaaf
+      size: 173748669
+    - path: pipeline/goals/musa/bundle/cast.json
+      hash: md5
+      md5: a00b0ae56948c35c9d3bee0d07cab186
+      size: 106139
+    - path: pipeline/goals/musa/bundle/puck_dets.json
+      hash: md5
+      md5: 61c18c3b0ad301ac2f04006f66d0860d
+      size: 16829
+    - path: pipeline/goals/musa/bundle/scene.json
+      hash: md5
+      md5: eef50f491ae973b4f9204bf6235e1e83
+      size: 3052566
+    - path: pipeline/goals/musa/bundle/scene.npz
+      hash: md5
+      md5: 456dd8412bd5892f4498d21a57eecc81
+      size: 35326
+    - path: pipeline/goals/musa/bundle/sticks.json
+      hash: md5
+      md5: 79c16600a3a13a971b92a72f6c07b520
+      size: 409664
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/musa
+      hash: md5
+      md5: 8e2172787b646fc77eae9e855820044c.dir
+      size: 122405138
+      nfiles: 71
+  scene@zadina:
+    cmd: just scene zadina
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/zadina/bundle/bodies.npz
+      hash: md5
+      md5: 784c635d78baf6b6b8e0835d72559eba
+      size: 149753520
+    - path: pipeline/goals/zadina/bundle/cast.json
+      hash: md5
+      md5: 82feaa448a2e09bbeced470650277504
+      size: 91174
+    - path: pipeline/goals/zadina/bundle/puck_dets.json
+      hash: md5
+      md5: b89e9e346483f321b6917ab594c0d411
+      size: 10407
+    - path: pipeline/goals/zadina/bundle/scene.json
+      hash: md5
+      md5: 208d7f2911a0439bb341630752c5c151
+      size: 3006691
+    - path: pipeline/goals/zadina/bundle/scene.npz
+      hash: md5
+      md5: 0328285ee53b324bc624f1d9cf86668f
+      size: 32862
+    - path: pipeline/goals/zadina/bundle/sticks.json
+      hash: md5
+      md5: 79c1ca926653f6adcb8b125feef6ab0c
+      size: 307828
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/zadina
+      hash: md5
+      md5: 462cff06193a71952628a7effc9013d8.dir
+      size: 105543061
+      nfiles: 63
+  scene@corvi:
+    cmd: just scene corvi
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/corvi/bundle/bodies.npz
+      hash: md5
+      md5: d03f109903d8279b9affeee759452a72
+      size: 129131556
+    - path: pipeline/goals/corvi/bundle/cast.json
+      hash: md5
+      md5: 2b9878a03c02ff735deab4ac27107ca6
+      size: 112540
+    - path: pipeline/goals/corvi/bundle/puck_dets.json
+      hash: md5
+      md5: 997b7423ea2b137f9801e3ec54132028
+      size: 11547
+    - path: pipeline/goals/corvi/bundle/scene.json
+      hash: md5
+      md5: bcad3c74b1ce5d801f77de20038a2384
+      size: 2895409
+    - path: pipeline/goals/corvi/bundle/scene.npz
+      hash: md5
+      md5: a052f6c7e2d89e6470898c59153bafba
+      size: 34318
+    - path: pipeline/goals/corvi/bundle/sticks.json
+      hash: md5
+      md5: 99ceb8377811b16ae4b1d5f7b57ce840
+      size: 382347
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/corvi
+      hash: md5
+      md5: 631f612a1f82e3eb3564587d917b7d6d.dir
+      size: 117024253
+      nfiles: 75
+  scene@stransky:
+    cmd: just scene stransky
+    deps:
+    - path: pipeline/goal
+      hash: md5
+      md5: 1cfc391336eda98786faebf85684e6cd.dir
+      size: 246224
+      nfiles: 16
+    - path: pipeline/goals/stransky/bundle/bodies.npz
+      hash: md5
+      md5: 916f97e510cf80d4bfef0b9b913b9c3e
+      size: 94472899
+    - path: pipeline/goals/stransky/bundle/cast.json
+      hash: md5
+      md5: 8fa3a41e8cb736076e680f6d0d10e62f
+      size: 109254
+    - path: pipeline/goals/stransky/bundle/puck_dets.json
+      hash: md5
+      md5: 3ef4106937155ba68fcf527adc0ee401
+      size: 13180
+    - path: pipeline/goals/stransky/bundle/scene.json
+      hash: md5
+      md5: acbe31f17ba844f7ef58e15440808a92
+      size: 1854132
+    - path: pipeline/goals/stransky/bundle/scene.npz
+      hash: md5
+      md5: 1b3c81e4b3df73309a9846948a423249
+      size: 31518
+    - path: pipeline/goals/stransky/bundle/sticks.json
+      hash: md5
+      md5: 4bea83e22d3c7df675acf94e98748ff5
+      size: 194789
+    - path: pipeline/kits
+      hash: md5
+      md5: f3400c243d9e5e26d274d29b2753ccdd.dir
+      size: 81130
+      nfiles: 8
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+    outs:
+    - path: store/scenes/stransky
+      hash: md5
+      md5: f1ac8cafef8dd9aac45dd3523d4326f5.dir
+      size: 113805604
+      nfiles: 75
+  moments:
+    cmd: just moments
+    deps:
+    - path: app/scripts/build-moments.ts
+      hash: md5
+      md5: 77b55cc69c15d37c52f9f1128c40415e
+      size: 1668
+    - path: app/scripts/build-orbits.ts
+      hash: md5
+      md5: b5c4ae7022809b3603cd2c0e75014a63
+      size: 5547
+    - path: store/data/20251231_115035_SpenglerCup_Kam1 31.12.25 Game 11.mp4
+      hash: md5
+      md5: 633e7bf1d3d00139e3e3f1b4ddc69c8f
+      size: 13717912932
+    - path: store/scenes
+      hash: md5
+      md5: b7dd36367c5f956fbeab7c4917cb7870.dir
+      size: 1234264890
+      nfiles: 775
+    - path: store/site/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    outs:
+    - path: store/site/moments
+      hash: md5
+      md5: 32bf47c08a2cf5a72033396a0eea4856.dir
+      size: 5497733
+      nfiles: 67
+    - path: store/site/moments.json
+      hash: md5
+      md5: 61b8af7f70ea08ddaae377c1d41dbf7a
+      size: 67
+    - path: store/site/orbits.json
+      hash: md5
+      md5: 967565dc48fc18fd1acdbf02b64096a5
+      size: 1123
+  atlas:
+    cmd: just atlas
+    deps:
+    - path: pipeline/arena/arena_atlas.py
+      hash: md5
+      md5: 84dfc2bf47f7d88cd6b546f742a8532e
+      size: 42580
+    - path: pipeline/goals.json
+      hash: md5
+      md5: 38d7c5319377f26742d0ad5abf3385c7
+      size: 517
+    - path: store/ar
+      hash: md5
+      md5: 3bb804d8c514fd82fbfe27733ec4c4ce.dir
+      size: 316014940
+      nfiles: 111
+    outs:
+    - path: store/atlas
+      hash: md5
+      md5: 3e42bc608bea00401073b20f8f952362.dir
+      size: 3965257
+      nfiles: 7
+  arena:
+    cmd: just arena
+    deps:
+    - path: pipeline/arena/atlas_refine.py
+      hash: md5
+      md5: c5023df07a71fb4fadfdc832c1416c90
+      size: 22897
+    - path: pipeline/arena/ice_glare.py
+      hash: md5
+      md5: 3211dad45dc3f2e295de1e81c7582958
+      size: 9049
+    - path: pipeline/arena/scoreboard.py
+      hash: md5
+      md5: 10cea4d64788679daa69612d4f835946
+      size: 8960
+    - path: pipeline/arena/stands_quilt.py
+      hash: md5
+      md5: 66173293e30a8560cc72bedbfd8e936e
+      size: 8293
+    - path: pipeline/goals/zadina/bundle/scene.json
+      hash: md5
+      md5: 208d7f2911a0439bb341630752c5c151
+      size: 3006691
+    - path: store/atlas
+      hash: md5
+      md5: 3e42bc608bea00401073b20f8f952362.dir
+      size: 3965257
+      nfiles: 7
+    outs:
+    - path: store/scenes/arena
+      hash: md5
+      md5: da7aaa78df74a68c06beeec207e26fc3.dir
+      size: 5977366
+      nfiles: 11
+  how:
+    cmd: just how
+    deps:
+    - path: pipeline/export/how_export.py
+      hash: md5
+      md5: f7b1c68a22891aa7ff21b86cb5bd4651
+      size: 11280
+    - path: pipeline/goals/musa/bundle/frames
+      hash: md5
+      md5: 1a17098aeab48e6f60c0228634b3db06.dir
+      size: 88655077
+      nfiles: 250
+    - path: pipeline/goals/musa/bundle/scene.json
+      hash: md5
+      md5: eef50f491ae973b4f9204bf6235e1e83
+      size: 3052566
+    - path: pipeline/goals/musa/bundle/sticks.json
+      hash: md5
+      md5: 79c16600a3a13a971b92a72f6c07b520
+      size: 409664
+    - path: store/atlas
+      hash: md5
+      md5: 3e42bc608bea00401073b20f8f952362.dir
+      size: 3965257
+      nfiles: 7
+    outs:
+    - path: store/site/how/musa
+      hash: md5
+      md5: 22aaf64e0e6e0955cb2fc978d51bc908.dir
+      size: 5576532
+      nfiles: 240
+  audio:
+    cmd: just audio
+    deps:
+    - path: app/scripts/build-audio.ts
+      hash: md5
+      md5: 2bd2b864e6c9ec2ff8be095e6c816e4f
+      size: 2304
+    - path: store/data/20251231_115035_SpenglerCup_Kam1 31.12.25 Game 11.mp4
+      hash: md5
+      md5: 633e7bf1d3d00139e3e3f1b4ddc69c8f
+      size: 13717912932
+    - path: store/scenes
+      hash: md5
+      md5: b7dd36367c5f956fbeab7c4917cb7870.dir
+      size: 1234264890
+      nfiles: 775
+    - path: store/site/game.json
+      hash: md5
+      md5: d15a00f6ce39cda8a0946a98ce504899
+      size: 707416
+    outs:
+    - path: store/site/audio
+      hash: md5
+      md5: a79af96b91399090639385591f7df92e.dir
+      size: 12823024
+      nfiles: 27

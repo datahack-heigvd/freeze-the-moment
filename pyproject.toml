@@ -1,0 +1,25 @@
+[project]
+name = "hockey-replays"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "dvc>=3.67.1",
+    "dvc-s3>=3.3.0",
+    "ruff>=0.17.1",
+]
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+extend-exclude = ["store", "app", "pipeline/goals", "pipeline/LTX-2", "pipeline/sam-3d-body", "pipeline/broadcast/out", "pipeline/calib/cache", "pipeline/calib/out"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "W", "I", "B", "UP"]
+# scripts import several modules per line and set sys.path before their imports; short names like l and I are the maths' own
+ignore = ["E401", "E402", "E731", "E741", "B007", "B023", "B905", "UP031"]
+
+[tool.ruff.lint.per-file-ignores]
+"pipeline/calib/scripts/gtrack.py" = ["F403", "F405"]  # extends vtrack's tracker, all of it

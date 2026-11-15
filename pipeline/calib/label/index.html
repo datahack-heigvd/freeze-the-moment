@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rink pose labeling</title>
+<style>
+  :root { color-scheme: dark; font-family: ui-sans-serif, system-ui, sans-serif; }
+  body { margin: 0; background: #111; color: #ddd; display: grid; grid-template-columns: 1fr 280px; height: 100vh; }
+  #stage { position: relative; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; }
+  #wrap { position: relative; width: min(100%, calc((100vh - 0px) * 16 / 9)); aspect-ratio: 16/9; }
+  #wrap img, #wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  canvas { cursor: grab; } canvas:active { cursor: grabbing; }
+  aside { padding: 12px; overflow: auto; font-size: 13px; border-left: 1px solid #333; }
+  h1 { font-size: 14px; margin: 0 0 8px; } button, input { font: inherit; }
+  button { background: #2a2a2a; color: #eee; border: 1px solid #444; border-radius: 4px; padding: 4px 8px; cursor: pointer; }
+  button.primary { background: #1d6f3a; border-color: #2a9d55; }
+  .row { display: flex; gap: 6px; margin: 6px 0; flex-wrap: wrap; align-items: center; }
+  .kf { display: flex; justify-content: space-between; padding: 3px 6px; border-radius: 3px; cursor: pointer; }
+  .kf:hover { background: #222; } .kf.cur { background: #2b3a55; } .kf.done { color: #6fdc8c; }
+  kbd { background: #333; border-radius: 3px; padding: 0 4px; font-size: 12px; }
+  .help { color: #999; line-height: 1.6; } #status { color: #6fdc8c; min-height: 1.2em; }
+  input[type=number] { width: 80px; background: #222; color: #eee; border: 1px solid #444; padding: 3px; }
+</style></head>
+<body>
+<div id="stage"><div id="wrap"><img id="img"><canvas id="cv" width="1920" height="1080"></canvas></div></div>
+<aside>
+  <h1>Rink pose labeling</h1>
+  <div class="row"><input id="t" type="number" step="0.5"><button id="go">go</button>
+    <button id="prev">[ prev</button><button id="next">next ]</button></div>
+  <div class="row"><button class="primary" id="save">save keyframe (Enter)</button><button id="reset">reset (R)</button><button id="del">delete</button></div>
+  <div id="status"></div>
+  <div class="row">f <b id="fv"></b> &nbsp; lens <input id="km" type="number" step="0.05" value="1" style="width:60px"></div>
+  <p class="help">
+    <b>drag</b>: pan/tilt the overlay<br><b>wheel</b>: zoom (f)<br><b>shift+drag</b>: roll<br>
+    <kbd>arrows</kbd> nudge 1px (<kbd>shift</kbd> 5px)<br><kbd>+</kbd><kbd>-</kbd> zoom, <kbd>Q</kbd><kbd>E</kbd> roll<br>
+    <kbd>O</kbd> toggle overlay, <kbd>Enter</kbd> save<br>
+    Align: red/blue lines, circle rings, goal posts, boards bottom edge (where boards meet ice). Check both left and right sides of the frame.
+  </p>
+  <div id="list"></div>
+</aside>
+<script>
+const cv = document.getElementById("cv"), ctx = cv.getContext("2d"), img = document.getElementById("img");
+const $ = (id) => document.getElementById(id);
+let rink, kfs = [], t = 920.6, f = 3000, R = null, km = 1, show = true, init = null;
+const SUG = Array.from({ length: 16 }, (_, i) => +(920.6 + 20 * i).toFixed(1));
+
+const mul = (A, B) => A.map((r, i) => [0, 1, 2].map((j) => r[0] * B[0][j] + r[1] * B[1][j] + r[2] * B[2][j]));
+function rod(v) {
+  const th = Math.hypot(...v); if (th < 1e-12) return [[1,0,0],[0,1,0],[0,0,1]];
+  const [x, y, z] = v.map((a) => a / th), c = Math.cos(th), s = Math.sin(th), C = 1 - c;
+  return [[c+x*x*C, x*y*C-z*s, x*z*C+y*s],[y*x*C+z*s, c+y*y*C, y*z*C-x*s],[z*x*C-y*s, z*y*C+x*s, c+z*z*C]];
+}
+function unrod(M) {
+  const tr = M[0][0] + M[1][1] + M[2][2], th = Math.acos(Math.max(-1, Math.min(1, (tr - 1) / 2)));
+  if (th < 1e-9) return [0, 0, 0];
+  const k = th / (2 * Math.sin(th));
+  return [(M[2][1]-M[1][2])*k, (M[0][2]-M[2][0])*k, (M[1][0]-M[0][1])*k];
+}
+function project(P) {
+  const { C, k1, cxo, cyo, fref } = rink.cam, k = k1 * km;
+  const d = [P[0]-C[0], P[1]-C[1], P[2]-C[2]];
+  const pc = R.map((r) => r[0]*d[0] + r[1]*d[1] + r[2]*d[2]);
+  if (pc[2] <= 0.1) return null;
+  const ux = f * pc[0] / pc[2], uy = f * pc[1] / pc[2], q = 1 + k * (ux*ux + uy*uy) / (fref*fref);
+  return [ux*q + 960 + cxo, uy*q + 540 + cyo];
+}
+function poly(pts, z = 0) {
+  ctx.beginPath(); let pen = false;
+  for (const p of pts) {
+    const q = project([p[0], p[1], p[2] ?? z]);
+    if (!q || Math.abs(q[0]) > 6000 || Math.abs(q[1]) > 6000) { pen = false; continue; }
+    pen ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); pen = true;
+  }
+  ctx.stroke();
+}
+function draw() {
+  ctx.clearRect(0, 0, 1920, 1080);
+  if (show) {
+    ctx.lineWidth = 1.6; ctx.strokeStyle = "rgba(255,235,0,.95)";
+    for (const k in rink.lines) poly(rink.lines[k]);
+    ctx.strokeStyle = "rgba(255,120,0,.95)";
+    for (const s in rink.goals) { for (const p of rink.goals[s]) poly(p); poly(rink.creases[s]); }
+  }
+  $("fv").textContent = f.toFixed(0);
+}
+function initPose(tt) {
+  const k = kfs.find((x) => Math.abs(x.t - tt) < 0.005);
+  if (k) return { f: k.f, rv: k.rv, km: k.km ?? 1 };
+  const I = rink.init; let b = 0;
+  for (let i = 1; i < I.t.length; i++) if (Math.abs(I.t[i] - tt) < Math.abs(I.t[b] - tt)) b = i;
+  return { f: I.f[b], rv: I.rv[b], km: 1 };
+}
+async function load(tt, keepPose) {
+  t = tt; $("t").value = t;
+  img.src = `/frame?t=${t}`;
+  if (!keepPose) { init = initPose(t); f = init.f; R = rod(init.rv); km = init.km; $("km").value = km; }
+  status(kfs.some((x) => Math.abs(x.t - t) < 0.005) ? "saved keyframe" : "");
+  draw(); renderList();
+}
+const status = (s) => ($("status").textContent = s);
+function renderList() {
+  $("list").innerHTML = "";
+  for (const s of SUG) {
+    const done = kfs.some((x) => Math.abs(x.t - s) < 0.005), d = document.createElement("div");
+    d.className = "kf" + (done ? " done" : "") + (Math.abs(s - t) < 0.005 ? " cur" : "");
+    d.innerHTML = `<span>${s.toFixed(1)}s</span><span>${done ? "saved" : ""}</span>`; d.onclick = () => load(s); $("list").append(d);
+  }
+  const extra = kfs.filter((x) => !SUG.some((s) => Math.abs(s - x.t) < 0.005));
+  for (const x of extra) { const d = document.createElement("div"); d.className = "kf done"; d.innerHTML = `<span>${x.t.toFixed(1)}s</span><span>saved</span>`; d.onclick = () => load(x.t); $("list").append(d); }
+}
+async function save() {
+  const r = await fetch("/api/keyframes", { method: "POST", body: JSON.stringify({ t, f, rv: unrod(R), km }) });
+  kfs = await r.json(); status(`saved (${kfs.length} keyframes)`); renderList();
+}
+let drag = null;
+cv.onmousedown = (e) => (drag = { x: e.clientX, y: e.clientY, shift: e.shiftKey });
+window.onmouseup = () => (drag = null);
+window.onmousemove = (e) => {
+  if (!drag) return;
+  const s = 1920 / cv.getBoundingClientRect().width, dx = (e.clientX - drag.x) * s, dy = (e.clientY - drag.y) * s;
+  drag.x = e.clientX; drag.y = e.clientY;
+  e.shiftKey ? rotate(0, 0, dx / 800) : rotate(dx, dy, 0); 
+};
+function rotate(dx, dy, roll) { R = mul(rod([-dy / f, dx / f, roll]), R); draw(); }
+cv.onwheel = (e) => { e.preventDefault(); f *= Math.exp(-e.deltaY * 0.0006); draw(); };
+window.onkeydown = (e) => {
+  if (e.target.tagName === "INPUT") { if (e.key === "Enter") e.target.blur(); return; }
+  const n = e.shiftKey ? 5 : 1;
+  if (e.key === "ArrowLeft") rotate(-n, 0, 0); else if (e.key === "ArrowRight") rotate(n, 0, 0);
+  else if (e.key === "ArrowUp") rotate(0, -n, 0); else if (e.key === "ArrowDown") rotate(0, n, 0);
+  else if (e.key === "+" || e.key === "=") { f *= e.shiftKey ? 1.01 : 1.003; draw(); }
+  else if (e.key === "-") { f /= e.shiftKey ? 1.01 : 1.003; draw(); }
+  else if (e.key.toLowerCase() === "q") rotate(0, 0, -0.0005 * n);
+  else if (e.key.toLowerCase() === "e") rotate(0, 0, 0.0005 * n);
+  else if (e.key.toLowerCase() === "o") { show = !show; draw(); }
+  else if (e.key === "Enter") save();
+  else if (e.key.toLowerCase() === "r") load(t);
+  else if (e.key === "[") step(-1); else if (e.key === "]") step(1);
+};
+function step(d) { const i = SUG.findIndex((s) => Math.abs(s - t) < 0.005); load(SUG[Math.max(0, Math.min(SUG.length - 1, (i < 0 ? 0 : i) + d))]); }
+$("go").onclick = () => load(+$("t").value); $("prev").onclick = () => step(-1); $("next").onclick = () => step(1);
+$("save").onclick = save; $("reset").onclick = () => load(t);
+$("del").onclick = async () => { kfs = await (await fetch(`/api/keyframes?t=${t}`, { method: "DELETE" })).json(); renderList(); status("deleted"); };
+$("km").onchange = () => { km = +$("km").value; draw(); };
+(async () => { rink = await (await fetch("/rink.json")).json(); kfs = await (await fetch("/api/keyframes")).json(); load(SUG[0]); })();
+</script></body></html>

@@ -1,0 +1,21 @@
+# the store's parts no stage builds: the match's raw inputs and the 2024 goal scene
+outs:
+- md5: 633e7bf1d3d00139e3e3f1b4ddc69c8f
+  size: 13717912932
+  hash: md5
+  path: store/data/20251231_115035_SpenglerCup_Kam1 31.12.25 Game 11.mp4
+- md5: 4bf8dabf2e5c5b5f9fe6478b7048550d
+  size: 3489260
+  hash: md5
+  path: store/data/U.S. Collegiate Selects_HC 
+    Davos_Wisehockey_Match_Events_31_12_2025.csv
+- md5: 331db404bf50e0e26d6b3f18283c703c
+  size: 17859
+  hash: md5
+  path: store/data/U.S. Collegiate Selects_HC 
+    Davos_Wisehockey_Match_Statistics_31_12_2025 All.csv
+- md5: 3a06f63d55db11e2e485c7086b837611.dir
+  size: 113205308
+  nfiles: 78
+  hash: md5
+  path: store/scenes/g24_davos_karpat_0367265

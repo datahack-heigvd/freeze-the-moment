@@ -1,0 +1,53 @@
+# environments and caches
+node_modules/
+.venv*
+__pycache__/
+*.pyc
+.ruff_cache/
+.cache/
+.scratch/
+
+# shared data and built outputs (footage, scenes, AR export, review media): pulled with dvc or rebuilt, never committed
+/store
+
+# per-project working folders
+pipeline/goals
+pipeline/LTX-2
+pipeline/sam-3d-body
+pipeline/bundle/
+pipeline/atlas/
+pipeline/benchmark/
+pipeline/check/
+pipeline/train24/
+pipeline/calib/cache/
+pipeline/calib/out/
+pipeline/broadcast/out/
+research/perception/bug/
+research/perception/clips2324/
+research/perception/eval/
+research/perception/audio/
+research/perception/graphics/
+research/perception/train/images/
+
+# media and model files
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.m4a
+*.npz
+*.npy
+*.pt
+*.pth
+*.safetensors
+*.onnx
+*.bin
+!app/public/assets/**/*.bin
+*.gz
+*.zip
+*.log
+
+# secrets
+.env
+.env.*

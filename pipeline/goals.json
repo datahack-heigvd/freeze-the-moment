@@ -1,0 +1,40 @@
+{
+ "goals": {
+  "asplund": {
+   "start": 2078.86,
+   "dur": 10.0
+  },
+  "walsh": {
+   "start": 2304.02,
+   "dur": 10.0
+  },
+  "tambellini_p1": {
+   "start": 2447.98,
+   "dur": 10.0
+  },
+  "fink": {
+   "start": 4272.9,
+   "dur": 10.0
+  },
+  "tambellini": {
+   "start": 4891.24,
+   "dur": 10.0
+  },
+  "musa": {
+   "start": 5310.2,
+   "dur": 10.0
+  },
+  "zadina": {
+   "start": 8672.9,
+   "dur": 10.0
+  },
+  "corvi": {
+   "start": 8919.34,
+   "dur": 10.0
+  },
+  "stransky": {
+   "start": 9191.02,
+   "dur": 10.0
+  }
+ }
+}

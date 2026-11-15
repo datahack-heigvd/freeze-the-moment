@@ -1,0 +1,157 @@
+# The whole pipeline, from the match's video and feed (store/data) to the site's scenes. `just repro` rebuilds what changed.
+# Steps marked GPU in the justfile need the GPU machine's environments (.env: LTX_PY, YOLO_PY, SAM_PY, IMAGE_PY, GPU_HOST).
+vars:
+  - pipeline/goals.json
+
+stages:
+  game:
+    cmd: just game
+    deps:
+      - store/data/U.S. Collegiate Selects_HC Davos_Wisehockey_Match_Events_31_12_2025.csv
+      - store/data/U.S. Collegiate Selects_HC Davos_Wisehockey_Match_Statistics_31_12_2025 All.csv
+      - app/scripts/build-data.ts
+      - app/scripts/build-players.ts
+    outs:
+      - store/site/game.json
+      - store/site/players.json
+
+  windows:
+    cmd: just windows
+    deps:
+      - store/site/game.json
+      - pipeline/goal/windows.py
+    outs:
+      - pipeline/goals.json:
+          cache: false
+
+  ar:
+    cmd: just calib all && just calib masks && just calib gaps
+    deps:
+      - store/data/20251231_115035_SpenglerCup_Kam1 31.12.25 Game 11.mp4
+      - store/site/game.json
+      - pipeline/calib/scripts
+      - pipeline/calib/gpu
+    outs:
+      - store/ar
+
+  bundle:
+    foreach: ${goals}
+    do:
+      cmd: just bundle ${key} ${item.start} ${item.dur}
+      deps:
+        - store/ar
+        - store/site/game.json
+        - pipeline/goal/prep.py
+        - pipeline/goal/cast.py
+      outs:
+        - pipeline/goals/${key}/bundle/frames
+        - pipeline/goals/${key}/bundle/scene.json
+        - pipeline/goals/${key}/bundle/scene.npz
+        - pipeline/goals/${key}/bundle/cast.json
+
+  detect:
+    foreach: ${goals}
+    do:
+      cmd: just detect ${key}
+      deps:
+        - pipeline/goals/${key}/bundle/frames
+        - pipeline/goals/${key}/bundle/scene.json
+        - pipeline/goal/puck.py
+      outs:
+        - pipeline/goals/${key}/bundle/puck_dets.json
+
+  bodies:
+    foreach: ${goals}
+    do:
+      cmd: just bodies ${key}
+      deps:
+        - pipeline/goals/${key}/bundle/frames
+        - pipeline/goals/${key}/bundle/scene.json
+        - pipeline/goals/${key}/bundle/scene.npz
+        - pipeline/goals/${key}/bundle/cast.json
+        - pipeline/goal/body.py
+      outs:
+        - pipeline/goals/${key}/bundle/bodies.npz
+
+  sticks:
+    foreach: ${goals}
+    do:
+      cmd: just sticks ${key}
+      deps:
+        - pipeline/goals/${key}/bundle/frames
+        - pipeline/goal/sticks.py
+      outs:
+        - pipeline/goals/${key}/bundle/sticks.json
+
+  atlas:
+    cmd: just atlas
+    deps:
+      - store/ar
+      - pipeline/goals.json
+      - pipeline/arena/arena_atlas.py
+    outs:
+      - store/atlas
+
+  arena:
+    cmd: just arena
+    deps:
+      - store/atlas
+      - pipeline/arena/atlas_refine.py
+      - pipeline/arena/scoreboard.py
+      - pipeline/arena/stands_quilt.py
+      - pipeline/arena/ice_glare.py
+      - pipeline/goals/zadina/bundle/scene.json
+    outs:
+      - store/scenes/arena
+
+  scene:
+    foreach: ${goals}
+    do:
+      cmd: just scene ${key}
+      deps:
+        - pipeline/goals/${key}/bundle/scene.json
+        - pipeline/goals/${key}/bundle/scene.npz
+        - pipeline/goals/${key}/bundle/cast.json
+        - pipeline/goals/${key}/bundle/puck_dets.json
+        - pipeline/goals/${key}/bundle/bodies.npz
+        - pipeline/goals/${key}/bundle/sticks.json
+        - store/scenes/arena
+        - pipeline/goal
+        - pipeline/kits
+      outs:
+        - store/scenes/${key}:
+            persist: true # forecast.json (research/forecast) lives beside the scene
+
+  moments:
+    cmd: just moments
+    deps:
+      - store/data/20251231_115035_SpenglerCup_Kam1 31.12.25 Game 11.mp4
+      - store/site/game.json
+      - store/scenes
+      - app/scripts/build-moments.ts
+      - app/scripts/build-orbits.ts
+    outs:
+      - store/site/moments.json
+      - store/site/orbits.json
+      - store/site/moments
+
+  audio:
+    cmd: just audio
+    deps:
+      - store/data/20251231_115035_SpenglerCup_Kam1 31.12.25 Game 11.mp4
+      - store/site/game.json
+      - store/scenes
+      - app/scripts/build-audio.ts
+    outs:
+      - store/site/audio
+
+  how:
+    cmd: just how
+    deps:
+      - pipeline/goals/musa/bundle/frames
+      - pipeline/goals/musa/bundle/scene.json
+      - pipeline/goals/musa/bundle/sticks.json
+      - store/atlas
+      - pipeline/export/how_export.py
+    outs:
+      - store/site/how/musa

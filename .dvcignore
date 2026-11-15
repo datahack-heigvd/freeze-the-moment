@@ -1,0 +1,4 @@
+# local caches, so folder dependencies hash the same in every clone
+__pycache__/
+*.pyc
+.ruff_cache/

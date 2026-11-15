@@ -1,0 +1,694 @@
+{
+	"fetchedAt": "2026-10-14",
+	"sources": [
+		"https://en.wikipedia.org/wiki/2025_Spengler_Cup",
+		"https://www.spenglercup.ch/en/tournament/games-standing"
+	],
+	"teams": {
+		"davos": {
+			"id": "davos",
+			"name": "HC Davos",
+			"short": "DAV",
+			"country": "SUI",
+			"logo": "/assets/teams/davos.png"
+		},
+		"uscs": {
+			"id": "uscs",
+			"name": "U.S. Collegiate Selects",
+			"short": "USA",
+			"country": "USA",
+			"logo": "/assets/teams/uscs.png"
+		},
+		"canada": {
+			"id": "canada",
+			"name": "Team Canada",
+			"short": "CAN",
+			"country": "CAN",
+			"logo": "/assets/teams/canada.png"
+		},
+		"fribourg": {
+			"id": "fribourg",
+			"name": "HC Fribourg-Gottéron",
+			"short": "FRI",
+			"country": "SUI",
+			"logo": "/assets/teams/fribourg.png"
+		},
+		"sparta": {
+			"id": "sparta",
+			"name": "HC Sparta Praha",
+			"short": "SPA",
+			"country": "CZE",
+			"logo": "/assets/teams/sparta.png"
+		},
+		"helsinki": {
+			"id": "helsinki",
+			"name": "IFK Helsinki",
+			"short": "HEL",
+			"country": "FIN",
+			"logo": "/assets/teams/helsinki.png"
+		},
+		"scl-tigers": {
+			"id": "scl-tigers",
+			"name": "SCL Tigers",
+			"short": "SCL",
+			"country": "SUI",
+			"logo": "/assets/teams/scl-tigers.png"
+		},
+		"mannheim": {
+			"id": "mannheim",
+			"name": "Adler Mannheim",
+			"short": "MAN",
+			"country": "GER",
+			"logo": "/assets/teams/mannheim.png"
+		},
+		"ilves": {
+			"id": "ilves",
+			"name": "Ilves Tampere",
+			"short": "ILV",
+			"country": "FIN",
+			"logo": "/assets/teams/ilves.png"
+		},
+		"frolunda": {
+			"id": "frolunda",
+			"name": "Frölunda HC",
+			"short": "FRO",
+			"country": "SWE",
+			"logo": "/assets/teams/frolunda.png"
+		}
+	},
+	"edition": {
+		"name": "Spengler Cup 2025",
+		"venue": "Eisstadion Davos",
+		"from": "2025-12-26",
+		"to": "2025-12-31",
+		"champion": "davos"
+	},
+	"standings": [
+		{
+			"group": "Torriani",
+			"rows": [
+				{
+					"team": "fribourg",
+					"pld": 2,
+					"w": 2,
+					"otw": 0,
+					"otl": 0,
+					"l": 0,
+					"gf": 9,
+					"ga": 5,
+					"pts": 6,
+					"advance": "Semifinals"
+				},
+				{
+					"team": "sparta",
+					"pld": 2,
+					"w": 1,
+					"otw": 0,
+					"otl": 0,
+					"l": 1,
+					"gf": 6,
+					"ga": 6,
+					"pts": 3,
+					"advance": "Quarterfinals"
+				},
+				{
+					"team": "helsinki",
+					"pld": 2,
+					"w": 0,
+					"otw": 0,
+					"otl": 0,
+					"l": 2,
+					"gf": 4,
+					"ga": 8,
+					"pts": 0,
+					"advance": "Quarterfinals"
+				}
+			]
+		},
+		{
+			"group": "Cattini",
+			"rows": [
+				{
+					"team": "uscs",
+					"pld": 2,
+					"w": 1,
+					"otw": 0,
+					"otl": 0,
+					"l": 1,
+					"gf": 7,
+					"ga": 6,
+					"pts": 3,
+					"advance": "Semifinals"
+				},
+				{
+					"team": "davos",
+					"pld": 2,
+					"w": 1,
+					"otw": 0,
+					"otl": 0,
+					"l": 1,
+					"gf": 7,
+					"ga": 6,
+					"pts": 3,
+					"advance": "Quarterfinals"
+				},
+				{
+					"team": "canada",
+					"pld": 2,
+					"w": 1,
+					"otw": 0,
+					"otl": 0,
+					"l": 1,
+					"gf": 4,
+					"ga": 6,
+					"pts": 3,
+					"advance": "Quarterfinals"
+				}
+			]
+		}
+	],
+	"games": [
+		{
+			"id": "g1",
+			"no": 1,
+			"stage": "Group stage",
+			"date": "2025-12-26",
+			"time": "15:10",
+			"home": "fribourg",
+			"away": "sparta",
+			"score": [
+				5,
+				2
+			],
+			"periods": [
+				[
+					1,
+					0
+				],
+				[
+					1,
+					0
+				],
+				[
+					3,
+					2
+				]
+			],
+			"shots": [
+				30,
+				27
+			],
+			"pim": [
+				24,
+				8
+			]
+		},
+		{
+			"id": "g2",
+			"no": 2,
+			"stage": "Group stage",
+			"date": "2025-12-26",
+			"time": "20:15",
+			"home": "canada",
+			"away": "uscs",
+			"score": [
+				3,
+				2
+			],
+			"periods": [
+				[
+					0,
+					0
+				],
+				[
+					3,
+					1
+				],
+				[
+					0,
+					1
+				]
+			],
+			"shots": [
+				35,
+				30
+			],
+			"pim": [
+				8,
+				4
+			]
+		},
+		{
+			"id": "g3",
+			"no": 3,
+			"stage": "Group stage",
+			"date": "2025-12-27",
+			"time": "15:10",
+			"home": "helsinki",
+			"away": "sparta",
+			"score": [
+				1,
+				4
+			],
+			"periods": [
+				[
+					0,
+					1
+				],
+				[
+					1,
+					2
+				],
+				[
+					0,
+					1
+				]
+			],
+			"shots": [
+				24,
+				36
+			],
+			"pim": [
+				8,
+				4
+			]
+		},
+		{
+			"id": "g4",
+			"no": 4,
+			"stage": "Group stage",
+			"date": "2025-12-27",
+			"time": "20:15",
+			"home": "davos",
+			"away": "uscs",
+			"score": [
+				3,
+				5
+			],
+			"periods": [
+				[
+					0,
+					1
+				],
+				[
+					2,
+					2
+				],
+				[
+					1,
+					2
+				]
+			],
+			"shots": [
+				32,
+				38
+			],
+			"pim": [
+				33,
+				4
+			]
+		},
+		{
+			"id": "g5",
+			"no": 5,
+			"stage": "Group stage",
+			"date": "2025-12-28",
+			"time": "15:10",
+			"home": "fribourg",
+			"away": "helsinki",
+			"score": [
+				4,
+				3
+			],
+			"periods": [
+				[
+					1,
+					2
+				],
+				[
+					2,
+					0
+				],
+				[
+					1,
+					1
+				]
+			],
+			"shots": [
+				29,
+				25
+			],
+			"pim": [
+				37,
+				37
+			]
+		},
+		{
+			"id": "g6",
+			"no": 6,
+			"stage": "Group stage",
+			"date": "2025-12-28",
+			"time": "20:15",
+			"home": "canada",
+			"away": "davos",
+			"score": [
+				1,
+				4
+			],
+			"periods": [
+				[
+					0,
+					1
+				],
+				[
+					1,
+					0
+				],
+				[
+					0,
+					3
+				]
+			],
+			"shots": [
+				22,
+				33
+			],
+			"pim": [
+				8,
+				6
+			]
+		},
+		{
+			"id": "g7",
+			"no": 7,
+			"stage": "Quarterfinal",
+			"date": "2025-12-29",
+			"time": "15:10",
+			"home": "sparta",
+			"away": "canada",
+			"score": [
+				5,
+				1
+			],
+			"periods": [
+				[
+					0,
+					0
+				],
+				[
+					0,
+					0
+				],
+				[
+					5,
+					1
+				]
+			],
+			"shots": [
+				26,
+				30
+			],
+			"pim": [
+				4,
+				2
+			]
+		},
+		{
+			"id": "g8",
+			"no": 8,
+			"stage": "Quarterfinal",
+			"date": "2025-12-29",
+			"time": "20:15",
+			"home": "davos",
+			"away": "helsinki",
+			"score": [
+				3,
+				0
+			],
+			"periods": [
+				[
+					1,
+					0
+				],
+				[
+					1,
+					0
+				],
+				[
+					1,
+					0
+				]
+			],
+			"shots": [
+				29,
+				24
+			],
+			"pim": [
+				2,
+				6
+			]
+		},
+		{
+			"id": "g9",
+			"no": 9,
+			"stage": "Semifinal",
+			"date": "2025-12-30",
+			"time": "15:10",
+			"home": "uscs",
+			"away": "sparta",
+			"score": [
+				5,
+				3
+			],
+			"periods": [
+				[
+					2,
+					1
+				],
+				[
+					2,
+					1
+				],
+				[
+					1,
+					1
+				]
+			],
+			"shots": [
+				26,
+				35
+			],
+			"pim": [
+				8,
+				8
+			]
+		},
+		{
+			"id": "g10",
+			"no": 10,
+			"stage": "Semifinal",
+			"date": "2025-12-30",
+			"time": "20:15",
+			"home": "fribourg",
+			"away": "davos",
+			"score": [
+				1,
+				3
+			],
+			"periods": [
+				[
+					0,
+					0
+				],
+				[
+					1,
+					2
+				],
+				[
+					0,
+					1
+				]
+			],
+			"shots": [
+				21,
+				21
+			],
+			"pim": [
+				8,
+				8
+			]
+		},
+		{
+			"id": "g11",
+			"no": 11,
+			"stage": "Final",
+			"date": "2025-12-31",
+			"time": "12:10",
+			"home": "uscs",
+			"away": "davos",
+			"score": [
+				3,
+				6
+			],
+			"periods": [
+				[
+					1,
+					2
+				],
+				[
+					2,
+					1
+				],
+				[
+					0,
+					3
+				]
+			],
+			"shots": [
+				23,
+				32
+			],
+			"pim": [
+				8,
+				2
+			]
+		}
+	],
+	"next": {
+		"name": "Spengler Cup 2026",
+		"fixtures": [
+			{
+				"id": "f1",
+				"no": 1,
+				"date": "2026-12-26",
+				"time": "15:10",
+				"home": {
+					"team": "scl-tigers"
+				},
+				"away": {
+					"team": "mannheim"
+				}
+			},
+			{
+				"id": "f2",
+				"no": 2,
+				"date": "2026-12-26",
+				"time": "20:15",
+				"home": {
+					"team": "frolunda"
+				},
+				"away": {
+					"team": "uscs"
+				}
+			},
+			{
+				"id": "f3",
+				"no": 3,
+				"date": "2026-12-27",
+				"time": "15:10",
+				"home": {
+					"team": "ilves"
+				},
+				"away": {
+					"label": "Loser Game 1"
+				}
+			},
+			{
+				"id": "f4",
+				"no": 4,
+				"date": "2026-12-27",
+				"time": "20:15",
+				"home": {
+					"team": "davos"
+				},
+				"away": {
+					"label": "Loser Game 2"
+				}
+			},
+			{
+				"id": "f5",
+				"no": 5,
+				"date": "2026-12-28",
+				"time": "15:10",
+				"home": {
+					"label": "Winner Game 1"
+				},
+				"away": {
+					"team": "ilves"
+				}
+			},
+			{
+				"id": "f6",
+				"no": 6,
+				"date": "2026-12-28",
+				"time": "20:15",
+				"home": {
+					"label": "Winner Game 2"
+				},
+				"away": {
+					"team": "davos"
+				}
+			},
+			{
+				"id": "f7",
+				"no": 7,
+				"date": "2026-12-29",
+				"time": "15:10",
+				"home": {
+					"label": "2. Group Torriani"
+				},
+				"away": {
+					"label": "3. Group Cattini"
+				}
+			},
+			{
+				"id": "f8",
+				"no": 8,
+				"date": "2026-12-29",
+				"time": "20:15",
+				"home": {
+					"label": "2. Group Cattini"
+				},
+				"away": {
+					"label": "3. Group Torriani"
+				}
+			},
+			{
+				"id": "f9",
+				"no": 9,
+				"date": "2026-12-30",
+				"time": "15:10",
+				"home": {
+					"label": "1. Group Cattini"
+				},
+				"away": {
+					"label": "Winner Game 7"
+				}
+			},
+			{
+				"id": "f10",
+				"no": 10,
+				"date": "2026-12-30",
+				"time": "20:15",
+				"home": {
+					"label": "1. Group Torriani"
+				},
+				"away": {
+					"label": "Winner Game 8"
+				}
+			},
+			{
+				"id": "f11",
+				"no": 11,
+				"date": "2026-12-31",
+				"time": "12:10",
+				"home": {
+					"label": "Winner Game 10"
+				},
+				"away": {
+					"label": "Winner Game 9"
+				}
+			}
+		]
+	}
+}

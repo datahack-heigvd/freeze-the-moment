@@ -1,0 +1,384 @@
+@import "tailwindcss";
+
+/* Design tokens. The canvas overlay reads the same values through getComputedStyle. */
+:root {
+	--ink: #0b0c0e;
+	--paper: #ece8df;
+	--dim: #8b8a85;
+	--live: #ff3b2f;
+	--home: #4f8cff;
+	--away: #f2c52d;
+	--surface: rgb(16 17 20 / 0.92);
+	--surface-hover: rgb(34 36 42 / 0.94);
+	--hairline: rgb(255 255 255 / 0.09);
+	--shadow: 0 6px 20px rgb(0 0 0 / 0.35);
+	--panel: #131418;
+	--panel-hover: #1a1c21;
+	/* the site header, one row on every screen */
+	--header-h: 3.5rem;
+}
+
+@theme inline {
+	--font-sans: "Inter Variable", sans-serif;
+	--color-ink: var(--ink);
+	--color-paper: var(--paper);
+	--color-dim: var(--dim);
+	--color-live: var(--live);
+	--color-home: var(--home);
+	--color-away: var(--away);
+	--color-surface: var(--surface);
+	--color-hairline: var(--hairline);
+	--color-panel: var(--panel);
+	--color-panel-hover: var(--panel-hover);
+	--radius-chip: 0px;
+	--radius-card: 10px;
+	--shadow-overlay: var(--shadow);
+}
+
+@layer base {
+	body {
+		@apply bg-ink text-paper font-sans antialiased;
+	}
+	a,
+	button {
+		-webkit-tap-highlight-color: transparent;
+	}
+	:is(a, button, [tabindex]):focus-visible {
+		outline: 2px solid var(--paper);
+		outline-offset: 2px;
+	}
+}
+
+/* Pill = something you press. Card = something you read. Chip = a label stuck to the ice. */
+@layer components {
+	.card {
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		box-shadow:
+			inset 0 0 0 1px var(--hairline),
+			var(--shadow);
+	}
+	.pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+		height: 2rem;
+		padding: 0 0.8rem;
+		border-radius: 9999px;
+		background: var(--surface);
+		box-shadow: inset 0 0 0 1px var(--hairline);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		white-space: nowrap;
+		cursor: pointer;
+		transition:
+			background 0.15s,
+			color 0.15s;
+	}
+	.pill:hover {
+		background: var(--surface-hover);
+	}
+	.pill[aria-pressed="true"] {
+		background: var(--paper);
+		color: var(--ink);
+	}
+	.pill.icon {
+		width: 2rem;
+		padding: 0;
+	}
+	.pill svg {
+		width: 1rem;
+		height: 1rem;
+	}
+	.seg {
+		display: inline-flex;
+		gap: 2px;
+		padding: 3px;
+		border-radius: 9999px;
+		background: var(--surface);
+		box-shadow: inset 0 0 0 1px var(--hairline);
+	}
+	.seg > button {
+		height: 1.625rem;
+		padding: 0 0.75rem;
+		border-radius: 9999px;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		white-space: nowrap;
+		color: rgb(236 232 223 / 0.65);
+		cursor: pointer;
+		transition:
+			background 0.15s,
+			color 0.15s;
+	}
+	.seg > button:hover {
+		color: var(--paper);
+	}
+	.seg > button[aria-pressed="true"] {
+		background: var(--paper);
+		color: var(--ink);
+	}
+
+	/* The site around the stage: panels hold content, buttons act, tabs switch views. */
+	.panel {
+		border-radius: 1rem;
+		background: var(--panel);
+		box-shadow: inset 0 0 0 1px var(--hairline);
+	}
+	a.panel,
+	button.panel {
+		transition: background 0.15s;
+	}
+	a.panel:hover,
+	button.panel:hover {
+		background: var(--panel-hover);
+	}
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		height: 2.5rem;
+		padding: 0 1.1rem;
+		border-radius: 9999px;
+		background: rgb(255 255 255 / 0.08);
+		font-size: 0.875rem;
+		font-weight: 600;
+		white-space: nowrap;
+		cursor: pointer;
+		transition: background 0.15s;
+	}
+	.btn:hover {
+		background: rgb(255 255 255 / 0.14);
+	}
+	.btn-primary {
+		background: var(--paper);
+		color: var(--ink);
+	}
+	.btn-primary:hover {
+		background: #fff;
+	}
+	.tabs {
+		display: flex;
+		gap: 0.25rem;
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+	.tabs a {
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding: 0.75rem 0.9rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		white-space: nowrap;
+		color: var(--dim);
+		transition: color 0.15s;
+	}
+	.tabs a:hover,
+	.tabs a[aria-current="page"] {
+		color: var(--paper);
+	}
+	.tabs a[aria-current="page"]::after {
+		content: "";
+		position: absolute;
+		inset: auto 0.9rem 0;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--away);
+	}
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		height: 1.375rem;
+		padding: 0 0.55rem;
+		border-radius: 9999px;
+		background: rgb(255 255 255 / 0.08);
+		font-size: 0.6875rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		white-space: nowrap;
+	}
+	.badge-live {
+		background: var(--live);
+		color: #fff;
+	}
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+}
+.rise {
+	animation: rise 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+	.rise {
+		animation: none;
+	}
+}
+
+/* Said once, then gone: in, held, out. */
+@keyframes hint {
+	from,
+	to {
+		opacity: 0;
+	}
+	8%,
+	80% {
+		opacity: 1;
+	}
+}
+.hint {
+	animation: hint 4s ease both;
+	pointer-events: none;
+}
+
+.rail {
+	display: flex;
+	gap: 0.75rem;
+	overflow-x: auto;
+	scroll-snap-type: x proximity;
+	scrollbar-width: none;
+}
+.rail > * {
+	scroll-snap-align: start;
+	flex: none;
+}
+
+#scrub {
+	appearance: none;
+	background: transparent;
+}
+#scrub::-webkit-slider-runnable-track {
+	height: 3px;
+	background: transparent;
+}
+#scrub::-moz-range-track {
+	height: 3px;
+	background: transparent;
+}
+#scrub::-webkit-slider-thumb {
+	appearance: none;
+	width: 12px;
+	height: 12px;
+	margin-top: -4.5px;
+	background: transparent;
+}
+#scrub::-moz-range-thumb {
+	width: 12px;
+	height: 12px;
+	border: 0;
+	background: transparent;
+}
+
+#tip {
+	transform: translate(-50%, calc(-100% - 10px));
+}
+#tip > i {
+	left: calc(50% + var(--dx, 0px));
+}
+
+/* Lower third for goals and penalties: top of the frame on phones, above the timeline otherwise. */
+#banner {
+	position: absolute;
+	left: 1rem;
+	right: 1rem;
+	top: 6.5rem;
+	opacity: 0;
+	transform: translateY(-8px);
+	pointer-events: none;
+	transition:
+		opacity 0.35s,
+		transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+		bottom 0.3s;
+}
+#banner.show {
+	opacity: 1;
+	transform: none;
+}
+@media (min-width: 640px) {
+	#banner {
+		left: 2rem;
+		right: auto;
+		top: auto;
+		bottom: 8rem;
+		max-width: min(36rem, calc(100% - 4rem));
+		transform: translateX(-16px);
+	}
+	#stage.idle #banner {
+		bottom: 1.5rem;
+	}
+}
+
+[data-ui] {
+	transition: opacity 0.3s;
+}
+#stage.idle [data-ui] {
+	opacity: 0;
+	pointer-events: none;
+}
+#stage.idle,
+#stage.idle video {
+	cursor: none;
+}
+
+/* Fullscreen shows the scoreboard and the stage, without the page's legend. */
+[data-stage-frame]:fullscreen {
+	background: #000;
+}
+[data-stage-frame]:fullscreen footer {
+	display: none;
+}
+
+/* A player's jersey tag over their head (ice/labels.ts), lifted by --lift out of the way of the tags nearer the camera. */
+.ice-tag > div {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.ice-tag b {
+	padding: 0.18em 0.42em;
+	border-radius: var(--radius-chip);
+	background: var(--team);
+	color: #fff;
+	font-weight: 700;
+	line-height: 1.1;
+	font-variant-numeric: tabular-nums;
+	box-shadow: 0 1px 4px rgb(0 0 0 / 0.5);
+}
+.ice-tag u {
+	margin-bottom: 0.2em;
+	border: 0.4em solid transparent;
+	border-bottom: 0;
+	border-top-color: #fff;
+	filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
+}
+.ice-tag.away b {
+	color: var(--ink);
+}
+/* biome-ignore lint/style/noDescendingSpecificity: a tag's pointer, not #tip's arrow */
+.ice-tag i {
+	border: 0.3em solid transparent;
+	border-bottom: 0;
+	border-top-color: var(--team);
+}
+.ice-tag s {
+	width: 2px;
+	height: var(--lift, 0px);
+	background: var(--team);
+	opacity: 0.8;
+}
+@media (prefers-reduced-motion: reduce) {
+	#banner {
+		transition: opacity 0.2s;
+	}
+}
